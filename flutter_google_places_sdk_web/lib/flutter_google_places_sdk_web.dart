@@ -182,7 +182,7 @@ class FlutterGooglePlacesSdkWebPlugin extends FlutterGooglePlacesSdkPlatform {
   String _mapField(PlaceField field) {
     switch (field) {
       case PlaceField.Address:
-        return 'formatted_address';
+        return 'adr_address';
       case PlaceField.AddressComponents:
         return 'address_components';
       case PlaceField.BusinessStatus:
@@ -238,12 +238,13 @@ class FlutterGooglePlacesSdkWebPlugin extends FlutterGooglePlacesSdkPlatform {
     }
 
     return inter.Place(
-      address: place.formattedAddress,
+      address: place.adrAddress,
       addressComponents: place.addressComponents
           ?.map(_parseAddressComponent)
           .cast<AddressComponent>()
           .toList(growable: false),
-      businessStatus: _parseBusinessStatus(getProperty(place, 'business_status')),
+      businessStatus:
+          _parseBusinessStatus(getProperty(place, 'business_status')),
       attributions: place.htmlAttributions?.cast<String>(),
       latLng: _parseLatLang(place.geometry?.location),
       name: place.name,
