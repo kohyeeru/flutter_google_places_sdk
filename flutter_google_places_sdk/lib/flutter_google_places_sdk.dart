@@ -96,7 +96,7 @@ class FlutterGooglePlacesSdk {
   Future<void> _ensureInitialized() {
     return _initialization ??= platform.initialize(apiKey, locale: locale)
       ..catchError((dynamic err) {
-        print('FlutterGooglePlacesSdk::_ensureInitialized error: $err');
+        print('EDIT FlutterGooglePlacesSdk::_ensureInitialized error: $err');
         _initialization = null;
       });
   }
